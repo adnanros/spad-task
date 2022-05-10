@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const CheckList = ({ personToCheckOut, onCheckSubmit }) => {
+const CheckList = ({ personToCheckOut, onCheckSubmit, onCheckToggler }) => {
     const person = personToCheckOut;
     const [checkout, setCheckout]= useState({
         name: true,
@@ -10,8 +10,9 @@ const CheckList = ({ personToCheckOut, onCheckSubmit }) => {
     const onConfirem = ()=> {
         if(checkout.name && checkout.familyName && checkout.birthDate) {
             onCheckSubmit(person.id);
+            onCheckToggler();
         } else {
-            return;
+            onCheckToggler();
         }
     }
     return (

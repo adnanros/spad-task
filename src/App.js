@@ -31,7 +31,7 @@ function App() {
   ]);
 
   const [showAddPerson, setShowAddPerson]= useState(false);
-  const [showChecklist, seShowCkeckList] = useState(false);
+  const [showChecklist, setShowCkeckList] = useState(false);
   const [personToCheckOut, setPersonToCheckOut]= useState({});
 
   const onAddPerson = ()=> {
@@ -44,8 +44,13 @@ function App() {
     setPersons(newPersons);
   }
 
+
+  const onCheckToggler = ()=>{
+    setShowCkeckList(!showChecklist);
+  }
+
   const onCheck =(person)=>{
-    seShowCkeckList(!showChecklist);
+    onCheckToggler();
     setPersonToCheckOut(person);
   }
 
@@ -65,7 +70,9 @@ function App() {
           {showAddPerson && 
           <AddPerson onSubmitAddPerson={onSubmitAddPerson} />}
           <button className='btn btn-primary' onClick={onAddPerson}>Add Person</button>
-          <CheckList personToCheckOut={personToCheckOut} onCheckSubmit={onCheckSubmit} />
+          {showChecklist && 
+          <CheckList personToCheckOut={personToCheckOut} onCheckSubmit={onCheckSubmit} onCheckToggler={onCheckToggler} />}
+          
         </div>
       </div>
     </div>
