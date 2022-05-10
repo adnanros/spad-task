@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import AddPerson from './components/AddPerson';
+import CheckList from './components/CheckList';
 import Persons from './components/Persons';
 import SearchBox from './components/SearchBox';
 
@@ -30,6 +31,8 @@ function App() {
   ]);
 
   const [showAddPerson, setShowAddPerson]= useState(false);
+  const [showChecklist, seShowCkeckList] = useState(false);
+  const [personToCheckOut, setPersonToCheckOut]= useState({});
 
   const onAddPerson = ()=> {
     setShowAddPerson(!showAddPerson);
@@ -41,15 +44,28 @@ function App() {
     setPersons(newPersons);
   }
 
+  const onCheck =(person)=>{
+    seShowCkeckList(!showChecklist);
+    setPersonToCheckOut(person);
+  }
+
+  const onCheckSubmit = (id) => {
+    const newPersons = persons.map((person)=>(
+      person.id !==id ? person : {...person, confirmed: true}
+    ));
+    setPersons(newPersons);
+  }
+
   return (
     <div className="App">
       <div className='container'>
         <div className="main-box">
           <SearchBox />
-          <Persons persons={persons} />
+          <Persons persons={persons} onCheck={onCheck}/>
           {showAddPerson && 
           <AddPerson onSubmitAddPerson={onSubmitAddPerson} />}
           <button className='btn btn-primary' onClick={onAddPerson}>Add Person</button>
+          <CheckList personToCheckOut={personToCheckOut} onCheckSubmit={onCheckSubmit} />
         </div>
       </div>
     </div>
