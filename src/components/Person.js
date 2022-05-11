@@ -17,7 +17,7 @@ const Person = ({ person, onCheck }) => {
                     {person.name}
                     <div className='d-flex justify-content-between'>
                         <div>
-                            <i class="fa fa-tag" aria-hidden="true"
+                            <i className="fa fa-tag" aria-hidden="true"
                                 style={{ 'color': person.confirmed ? 'green' : 'red' }}></i>
                         </div>
                         {!person.confirmed &&

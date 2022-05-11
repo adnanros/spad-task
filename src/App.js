@@ -12,6 +12,7 @@ function App() {
       name: 'Bill',
       familyName: 'Gates',
       birthDate: '1960/09/01',
+      selected: false,
       confirmed: false,
     },
     {
@@ -19,6 +20,7 @@ function App() {
       name: 'Jim',
       familyName: 'Carry',
       birthDate: '1965/09/01',
+      selected: false,
       confirmed: false,
     },
     {
@@ -26,13 +28,16 @@ function App() {
       name: 'John',
       familyName: 'Stovart',
       birthDate: '1970/09/01',
+      selected: false,
       confirmed: false,
     }
   ]);
 
+  const [filteredPersons, setFilteredPersons] = useState(persons);
   const [showAddPerson, setShowAddPerson]= useState(false);
   const [showChecklist, setShowCkeckList] = useState(false);
   const [personToCheckOut, setPersonToCheckOut]= useState({});
+  const [showBySearch, setShowBySearch] = useState(false);
 
   const onAddPerson = ()=> {
     setShowAddPerson(!showAddPerson);
@@ -61,12 +66,28 @@ function App() {
     setPersons(newPersons);
   }
 
+  const filterBySearch = (inputText) => {
+     const newPersons = persons.filter((person)=>{
+      if(inputText === ''){
+        return person;
+      } else {
+        return (person.familyName.toLowerCase().includes(inputText) ||
+                person.name.toLowerCase().includes(inputText));
+      }
+    });
+    setFilteredPersons(newPersons);
+    setShowBySearch(true);
+  }
+
   return (
     <div className="App">
       <div className='container'>
         <div className="main-box">
-          <SearchBox />
-          <Persons persons={persons} onCheck={onCheck}/>
+          <SearchBox filterBySearch={ filterBySearch }/>
+          {!showBySearch && 
+          <Persons persons ={persons} onCheck ={onCheck} />}
+          {showBySearch && 
+          <Persons persons ={filteredPersons} onCheck ={onCheck} />}
           {showAddPerson && 
           <AddPerson onSubmitAddPerson={onSubmitAddPerson} />}
           <button className='btn btn-primary' onClick={onAddPerson}>Add Person</button>
