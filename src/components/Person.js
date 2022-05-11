@@ -7,7 +7,7 @@ const Person = ({ person, onCheck, onSelect, onEditPerson }) => {
 
             <div className='d-flex'>
                 <div className='col-3' style={{}}>
-                    <img src={`${process.env.PUBLIC_URL}/assets/images/${person.profleImage}`} style={{ 'width': '100%', 'height': '100%' }} alt='...' />
+                    <img src={`${process.env.PUBLIC_URL}/assets/images/${person.profileImage}`} style={{ 'width': '100%', 'height': '100%' }} alt='...' />
                 </div>
                 <div className='col-9' style={{}}>
                     <div className='d-flex justify-content-end'>

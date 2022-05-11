@@ -10,8 +10,10 @@ const AddPerson = ({ onSubmitAddPerson, onAddPerson }) => {
     const [person, setPerson] = useState({
         name: '',
         familyName: '',
-        birthday: ''
+        birthday: '',
+        profileImage: 'avatar.jpg'
     });
+
     return (
         <div style={{ 'padding': '10px' , 'border': '1px solid #ccc', 'marginBottom': '3px' }}>
             <form onSubmit={(e) => { onSubmit(e) }}>
@@ -38,6 +40,10 @@ const AddPerson = ({ onSubmitAddPerson, onAddPerson }) => {
                             value={person.birthday}
                             onChange={(e) => { setPerson({ ...person, birthday: e.target.value }) }} />
                     </div>
+                </div>
+                <div>
+                    <input type="file" name="profileImage" 
+                    onChange={(e)=>{setPerson({...person, profileImage: e.target.files[0]})}} />
                 </div>
                 <div className="d-flex justify-content-end">
                     <ClosePersonButton onClick={onAddPerson} />

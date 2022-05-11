@@ -6,7 +6,7 @@ import CheckList from './components/CheckList';
 import EditPerson from './components/EditPerson';
 import Persons from './components/Persons';
 import SearchBox from './components/SearchBox';
-import SelectAll from './components/SelectAll';
+import ActionBar from './components/ActionBar';
 
 function App() {
   const [persons, setPersons] = useState([
@@ -17,7 +17,7 @@ function App() {
       birthDate: '1955',
       selected: false,
       confirmed: false,
-      profleImage: 'gates.jpg',
+      profileImage: 'gates.jpg',
     },
     {
       id: '4988988833',
@@ -26,7 +26,7 @@ function App() {
       birthDate: '1962',
       selected: false,
       confirmed: false,
-      profleImage: 'carrey.jpg',
+      profileImage: 'carrey.jpg',
     },
     {
       id: '4988988834',
@@ -35,7 +35,7 @@ function App() {
       birthDate: '1987',
       selected: false,
       confirmed: false,
-      profleImage: 'messi.jpg',
+      profileImage: 'messi.jpg',
     }
   ]);
 
@@ -117,23 +117,23 @@ const onAddPerson = () => {
     setSelectAll(e.currentTarget.checked);
   }
 
+  const onDelete = ()=> {
+    const newPersons = persons.filter((person)=> (person.selected === false));
+    setPersons(newPersons);
+
+  }
+
   return (
     <div className="App">
       <div className='container'>
         <div className="main-box">
           <SearchBox filterBySearch={filterBySearch} />
-          <SelectAll onSelectAll={onSelectAll} selectAll={selectAll} />
-          {!showBySearch &&
-            <Persons persons={persons} onCheck={onCheck} onSelect={onSelect} onEditPerson={onEditPerson} />}
-          {showBySearch &&
-            <Persons persons={filteredPersons} onCheck={onCheck} onSelect={onSelect} onEditPerson={onEditPerson} />}
-          {showAddPerson &&
-            <AddPerson onSubmitAddPerson={onSubmitAddPerson} onAddPerson={onAddPerson} />}
+          <ActionBar onSelectAll={onSelectAll} selectAll={selectAll} onDelete={onDelete} />
+          <Persons persons={!showBySearch ? persons : filteredPersons} onCheck={onCheck} onSelect={onSelect} onEditPerson={onEditPerson} />
+          {showAddPerson && <AddPerson onSubmitAddPerson={onSubmitAddPerson} onAddPerson={onAddPerson} />}
           <AddPersonButton onAddPerson={onAddPerson} /> 
           {showEditPerson && <EditPerson onSubmitEditPerson= {onSubmitEditPerson} onEditPerson={onEditPerson} personToBeUpdated={personToBeUpdated}/>}
-          {showChecklist &&
-            <CheckList personToCheckOut={personToCheckOut} onCheckSubmit={onCheckSubmit} onCheckToggler={onCheckToggler} />
-          }
+          {showChecklist && <CheckList personToCheckOut={personToCheckOut} onCheckSubmit={onCheckSubmit} onCheckToggler={onCheckToggler} />}
         </div>
       </div>
     </div>
