@@ -17,7 +17,9 @@ const Person = ({ person, onCheck, onSelect }) => {
                             onChange={()=>{onSelect(person.id)}} />
                         </div>
                     </div>
+
                     <PersonDetail person={person}/>
+                    
                     <div className='d-flex justify-content-between' style={{'paddingLeft': '10px'}}>
                         <div>
                             <i className="fa fa-tag" aria-hidden="true"

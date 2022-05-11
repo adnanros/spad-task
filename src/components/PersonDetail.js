@@ -11,7 +11,7 @@ const PersonDetail = ({person}) => {
                     </div>
                     <div className='d-flex justify-content-begin'>
                         <div className='col-3'>
-                            FamilyName:
+                            Family:
                         </div>
                         <div className='col-3'>
                             {person.familyName}
@@ -19,7 +19,7 @@ const PersonDetail = ({person}) => {
                     </div>
                     <div className='d-flex justify-content-begin'>
                         <div className='col-3'>
-                            BirthDate:
+                            BirthDay:
                         </div>
                         <div className='col-3'>
                             {person.birthDate}
