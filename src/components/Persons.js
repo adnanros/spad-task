@@ -1,16 +1,16 @@
 import Person from "./Person";
 
-const Persons = ({persons, onCheck, onSelect}) => {
+const Persons = ({persons, onCheck, onSelect, onEditPerson}) => {
     const selectedPersons = persons.map((person, index) => 
     {
         if(person.selected) {
-        return(<Person key={index} person={person} onCheck={onCheck}  onSelect= {onSelect} />);
+        return(<Person key={index} person={person} onCheck={onCheck}  onSelect= {onSelect} onEditPerson={onEditPerson} />);
         } else { return '';}
     });
     const unselectedPersons = persons.map((person, index) => 
     {
         if(!person.selected) {
-        return(<Person key={index} person={person} onCheck={onCheck}  onSelect= {onSelect} />);
+        return(<Person key={index} person={person} onCheck={onCheck}  onSelect= {onSelect} onEditPerson={onEditPerson} />);
         } else { return '';}
     });
 

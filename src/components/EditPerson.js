@@ -1,17 +1,13 @@
 import { useState } from "react";
 import ClosePersonButton from './ClosePersonButton'
 
-const AddPerson = ({ onSubmitAddPerson, onAddPerson }) => {
+const EditPerson = ({ onSubmitEditPerson, onEditPerson, personToBeUpdated }) => {
     const onSubmit = (e) => {
         e.preventDefault();
-        onSubmitAddPerson(person)
+        onSubmitEditPerson(person)
     }
 
-    const [person, setPerson] = useState({
-        name: '',
-        familyName: '',
-        birthday: ''
-    });
+    const [person, setPerson] = useState(personToBeUpdated);
     return (
         <div style={{ 'padding': '10px' , 'border': '1px solid #ccc', 'marginBottom': '3px' }}>
             <form onSubmit={(e) => { onSubmit(e) }}>
@@ -40,7 +36,7 @@ const AddPerson = ({ onSubmitAddPerson, onAddPerson }) => {
                     </div>
                 </div>
                 <div className="d-flex justify-content-end">
-                    <ClosePersonButton onClick={onAddPerson} />
+                    <ClosePersonButton onClick={()=>{onEditPerson(person)}} />
                     <button className="btn btn-sm" type="submit" style={{ 'backgroundColor': '#57EFDD', }}>Save</button>
                 </div>
             </form>
@@ -48,4 +44,4 @@ const AddPerson = ({ onSubmitAddPerson, onAddPerson }) => {
     );
 }
 
-export default AddPerson;
+export default EditPerson;

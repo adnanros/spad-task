@@ -1,6 +1,6 @@
 const PersonDetail = ({person}) => {
     return ( 
-        <div>
+        <div className="mb-3">
            <div className='d-flex justify-content-begin'>
                         <div className='col-3'>
                             Name:

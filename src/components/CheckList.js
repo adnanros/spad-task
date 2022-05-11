@@ -21,10 +21,10 @@ const CheckList = ({ personToCheckOut, onCheckSubmit, onCheckToggler }) => {
                 <div className="col-3">Name:</div>
                 <div className="col-7">{person.name}</div>
                 <div className="col-2" style={{ 'cursor': 'pointer' }}>
-                    <i class="fa fa-check-circle" aria-hidden="true"
+                    <i className="fa fa-check-circle" aria-hidden="true"
                         style={{ 'color': !checkout.name ? 'black' : 'green' }}
                         onClick={() => { setCheckout({ ...checkout, name: true }) }}></i>
-                    <i class="fa fa-times-circle" aria-hidden="true"
+                    <i className="fa fa-times-circle" aria-hidden="true"
                         style={{ 'color': checkout.name ? 'black' : 'red' }}
                         onClick={() => { setCheckout({ ...checkout, name: false }) }}></i>
                 </div>
@@ -33,10 +33,10 @@ const CheckList = ({ personToCheckOut, onCheckSubmit, onCheckToggler }) => {
                 <div className="col-3">Family:</div>
                 <div className="col-7">{person.familyName}</div>
                 <div className="col-2" style={{ 'cursor': 'pointer' }}>
-                    <i class="fa fa-check-circle" aria-hidden="true"
+                    <i className="fa fa-check-circle" aria-hidden="true"
                         style={{ 'color': !checkout.familyName ? 'black' : 'green' }}
                         onClick={() => { setCheckout({ ...checkout, familyName: true }) }}></i>
-                    <i class="fa fa-times-circle" aria-hidden="true"
+                    <i className="fa fa-times-circle" aria-hidden="true"
                         style={{ 'color': checkout.familyName ? 'black' : 'red' }}
                         onClick={() => { setCheckout({ ...checkout, familyName: false }) }}></i>
                 </div>
@@ -45,10 +45,10 @@ const CheckList = ({ personToCheckOut, onCheckSubmit, onCheckToggler }) => {
                 <div className="col-3">Birthday:</div>
                 <div className="col-7">{person.birthDate}</div>
                 <div className="col-2" style={{ 'cursor': 'pointer' }}>
-                    <i class="fa fa-check-circle" aria-hidden="true"
+                    <i className="fa fa-check-circle" aria-hidden="true"
                         style={{ 'color': !checkout.birthDate ? 'black' : 'green' }}
                         onClick={() => { setCheckout({ ...checkout, birthDate: true }) }}></i>
-                    <i class="fa fa-times-circle" aria-hidden="true"
+                    <i className="fa fa-times-circle" aria-hidden="true"
                         style={{ 'color': checkout.birthDate ? 'black' : 'red' }}
                         onClick={() => { setCheckout({ ...checkout, birthDate: false }) }}></i>
                 </div>

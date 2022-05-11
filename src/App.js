@@ -2,8 +2,8 @@ import { useState } from 'react';
 import './App.css';
 import AddPerson from './components/AddPerson';
 import AddPersonButton from './components/AddPersonButton';
-import ClosePersonButton from './components/ClosePersonButton';
 import CheckList from './components/CheckList';
+import EditPerson from './components/EditPerson';
 import Persons from './components/Persons';
 import SearchBox from './components/SearchBox';
 import SelectAll from './components/SelectAll';
@@ -14,43 +14,61 @@ function App() {
       id: '4988988832',
       name: 'Bill',
       familyName: 'Gates',
-      birthDate: '1960/09/01',
+      birthDate: '1955',
       selected: false,
       confirmed: false,
+      profleImage: 'gates.jpg',
     },
     {
       id: '4988988833',
       name: 'Jim',
       familyName: 'Carry',
-      birthDate: '1965/09/01',
+      birthDate: '1962',
       selected: false,
       confirmed: false,
+      profleImage: 'carrey.jpg',
     },
     {
       id: '4988988834',
-      name: 'John',
-      familyName: 'Stovart',
-      birthDate: '1970/09/01',
+      name: 'Lionel',
+      familyName: 'Messi',
+      birthDate: '1987',
       selected: false,
       confirmed: false,
+      profleImage: 'messi.jpg',
     }
   ]);
 
   const [filteredPersons, setFilteredPersons] = useState(persons);
   const [showAddPerson, setShowAddPerson] = useState(false);
+  const [showEditPerson, setShowEditPerson] = useState(false);
+  const [personToBeUpdated, setPersonToBeUpdated]=useState();
   const [showChecklist, setShowCkeckList] = useState(false);
   const [personToCheckOut, setPersonToCheckOut] = useState({});
   const [showBySearch, setShowBySearch] = useState(false);
   const [selectAll, setSelectAll] = useState();
 
-  const onAddPerson = () => {
+  
+const onAddPerson = () => {
     setShowAddPerson(!showAddPerson);
   }
-
   const onSubmitAddPerson = (person) => {
     person.confirmed = false;
     const newPersons = [...persons, person];
     setPersons(newPersons);
+  }
+
+  const onEditPerson = (personToBeUpdated={}) => {
+    setPersonToBeUpdated(personToBeUpdated);
+    setShowEditPerson(!showEditPerson);
+  }
+
+  const onSubmitEditPerson = (updatedPerson) => {
+    const newPersons = persons.map((person)=>(
+      person.id !== updatedPerson.id ? person : updatedPerson
+    ));
+    setPersons(newPersons);
+    onEditPerson();
   }
 
 
@@ -106,12 +124,13 @@ function App() {
           <SearchBox filterBySearch={filterBySearch} />
           <SelectAll onSelectAll={onSelectAll} selectAll={selectAll} />
           {!showBySearch &&
-            <Persons persons={persons} onCheck={onCheck} onSelect={onSelect} />}
+            <Persons persons={persons} onCheck={onCheck} onSelect={onSelect} onEditPerson={onEditPerson} />}
           {showBySearch &&
-            <Persons persons={filteredPersons} onCheck={onCheck} onSelect={onSelect} />}
+            <Persons persons={filteredPersons} onCheck={onCheck} onSelect={onSelect} onEditPerson={onEditPerson} />}
           {showAddPerson &&
-            <AddPerson onSubmitAddPerson={onSubmitAddPerson} />}
-          {!showAddPerson ? <AddPersonButton onAddPerson={onAddPerson} /> : <ClosePersonButton onAddPerson={onAddPerson} />}
+            <AddPerson onSubmitAddPerson={onSubmitAddPerson} onAddPerson={onAddPerson} />}
+          <AddPersonButton onAddPerson={onAddPerson} /> 
+          {showEditPerson && <EditPerson onSubmitEditPerson= {onSubmitEditPerson} onEditPerson={onEditPerson} personToBeUpdated={personToBeUpdated}/>}
           {showChecklist &&
             <CheckList personToCheckOut={personToCheckOut} onCheckSubmit={onCheckSubmit} onCheckToggler={onCheckToggler} />
           }
