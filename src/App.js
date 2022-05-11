@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import './App.css';
 import AddPerson from './components/AddPerson';
+import AddPersonButton from './components/AddPersonButton';
 import CheckList from './components/CheckList';
 import Persons from './components/Persons';
 import SearchBox from './components/SearchBox';
+import SelectAll from './components/SelectAll';
 
 function App() {
   const [persons, setPersons] = useState([
@@ -34,12 +36,13 @@ function App() {
   ]);
 
   const [filteredPersons, setFilteredPersons] = useState(persons);
-  const [showAddPerson, setShowAddPerson]= useState(false);
+  const [showAddPerson, setShowAddPerson] = useState(false);
   const [showChecklist, setShowCkeckList] = useState(false);
-  const [personToCheckOut, setPersonToCheckOut]= useState({});
+  const [personToCheckOut, setPersonToCheckOut] = useState({});
   const [showBySearch, setShowBySearch] = useState(false);
+  const [selectAll, setSelectAll] = useState();
 
-  const onAddPerson = ()=> {
+  const onAddPerson = () => {
     setShowAddPerson(!showAddPerson);
   }
 
@@ -50,60 +53,67 @@ function App() {
   }
 
 
-  const onCheckToggler = ()=>{
+  const onCheckToggler = () => {
     setShowCkeckList(!showChecklist);
   }
 
-  const onCheck =(person)=>{
+  const onCheck = (person) => {
     onCheckToggler();
     setPersonToCheckOut(person);
   }
 
   const onCheckSubmit = (id) => {
-    const newPersons = persons.map((person)=>(
-      person.id !==id ? person : {...person, confirmed: true}
+    const newPersons = persons.map((person) => (
+      person.id !== id ? person : { ...person, confirmed: true }
     ));
     setPersons(newPersons);
   }
 
   const filterBySearch = (inputText) => {
-     const newPersons = persons.filter((person)=>{
-      if(inputText === ''){
+    const newPersons = persons.filter((person) => {
+      if (inputText === '') {
         return person;
-      } else if(person.selected === true){
+      } else if (person.selected === true) {
         return person;
       } else {
         return (person.familyName.toLowerCase().includes(inputText) ||
-                person.name.toLowerCase().includes(inputText));
+          person.name.toLowerCase().includes(inputText));
       }
     });
     setFilteredPersons(newPersons);
     setShowBySearch(true);
   }
 
-  const onSelect = (id)=> {
-    const newPersons = persons.map((person)=> (
-      person.id !==id ? person : {...person, selected: !person.selected}
+  const onSelect = (id) => {
+    const newPersons = persons.map((person) => (
+      person.id !== id ? person : { ...person, selected: !person.selected }
     ));
     setPersons(newPersons);
     setFilteredPersons(newPersons);
+  }
+
+  const onSelectAll = (e) => {
+    const newPersons = persons.map((person) => ({ ...person, selected: !person.selected }));
+    setPersons(newPersons);
+    setSelectAll(e.currentTarget.checked);
   }
 
   return (
     <div className="App">
       <div className='container'>
         <div className="main-box">
-          <SearchBox filterBySearch={ filterBySearch }/>
-          {!showBySearch && 
-          <Persons persons ={persons} onCheck ={onCheck} onSelect= {onSelect} />}
-          {showBySearch && 
-          <Persons persons ={filteredPersons} onCheck ={onCheck}  onSelect= {onSelect} />}
-          {showAddPerson && 
-          <AddPerson onSubmitAddPerson={onSubmitAddPerson} />}
-          <button className='btn btn-primary' onClick={onAddPerson}>Add Person</button>
-          {showChecklist && 
-          <CheckList personToCheckOut={personToCheckOut} onCheckSubmit={onCheckSubmit} onCheckToggler={onCheckToggler} />}
-          
+          <SearchBox filterBySearch={filterBySearch} />
+          <SelectAll onSelectAll={onSelectAll} selectAll={selectAll} />
+          {!showBySearch &&
+            <Persons persons={persons} onCheck={onCheck} onSelect={onSelect} />}
+          {showBySearch &&
+            <Persons persons={filteredPersons} onCheck={onCheck} onSelect={onSelect} />}
+          {showAddPerson &&
+            <AddPerson onSubmitAddPerson={onSubmitAddPerson} />}
+          <AddPersonButton onAddPerson={onAddPerson} />
+          {showChecklist &&
+            <CheckList personToCheckOut={personToCheckOut} onCheckSubmit={onCheckSubmit} onCheckToggler={onCheckToggler} />
+          }
         </div>
       </div>
     </div>
