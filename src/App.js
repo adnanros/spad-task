@@ -79,15 +79,22 @@ function App() {
     setShowBySearch(true);
   }
 
+  const onSelect = (id)=> {
+    const newPerson = persons.map((person)=> (
+      person.id !==id ? person : {...person, selected: !person.selected}
+    ));
+    setPersons(newPerson);
+  }
+
   return (
     <div className="App">
       <div className='container'>
         <div className="main-box">
           <SearchBox filterBySearch={ filterBySearch }/>
           {!showBySearch && 
-          <Persons persons ={persons} onCheck ={onCheck} />}
+          <Persons persons ={persons} onCheck ={onCheck} onSelect= {onSelect} />}
           {showBySearch && 
-          <Persons persons ={filteredPersons} onCheck ={onCheck} />}
+          <Persons persons ={filteredPersons} onCheck ={onCheck}  onSelect= {onSelect} />}
           {showAddPerson && 
           <AddPerson onSubmitAddPerson={onSubmitAddPerson} />}
           <button className='btn btn-primary' onClick={onAddPerson}>Add Person</button>

@@ -1,4 +1,4 @@
-const Person = ({ person, onCheck }) => {
+const Person = ({ person, onCheck, onSelect }) => {
     return (
         <div className='mb-3'
             style={{ 'height': '150px', 'padding': '3px', 'backgroundColor': '#666' }}>
@@ -11,7 +11,8 @@ const Person = ({ person, onCheck }) => {
                     <div className='d-flex justify-content-end'>
                         <button className='btn btn-sm btn-ouline-secondary'>Edit</button>
                         <div>
-                            <input type='checkbox' />
+                            <input type='checkbox' checked={person.selected} 
+                            onChange={()=>{onSelect(person.id)}} />
                         </div>
                     </div>
                     {person.name}
