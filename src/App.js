@@ -70,6 +70,8 @@ function App() {
      const newPersons = persons.filter((person)=>{
       if(inputText === ''){
         return person;
+      } else if(person.selected === true){
+        return person;
       } else {
         return (person.familyName.toLowerCase().includes(inputText) ||
                 person.name.toLowerCase().includes(inputText));
@@ -80,10 +82,11 @@ function App() {
   }
 
   const onSelect = (id)=> {
-    const newPerson = persons.map((person)=> (
+    const newPersons = persons.map((person)=> (
       person.id !==id ? person : {...person, selected: !person.selected}
     ));
-    setPersons(newPerson);
+    setPersons(newPersons);
+    setFilteredPersons(newPersons);
   }
 
   return (
