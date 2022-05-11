@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import AddPerson from './components/AddPerson';
 import AddPersonButton from './components/AddPersonButton';
+import ClosePersonButton from './components/ClosePersonButton';
 import CheckList from './components/CheckList';
 import Persons from './components/Persons';
 import SearchBox from './components/SearchBox';
@@ -110,7 +111,7 @@ function App() {
             <Persons persons={filteredPersons} onCheck={onCheck} onSelect={onSelect} />}
           {showAddPerson &&
             <AddPerson onSubmitAddPerson={onSubmitAddPerson} />}
-          <AddPersonButton onAddPerson={onAddPerson} />
+          {!showAddPerson ? <AddPersonButton onAddPerson={onAddPerson} /> : <ClosePersonButton onAddPerson={onAddPerson} />}
           {showChecklist &&
             <CheckList personToCheckOut={personToCheckOut} onCheckSubmit={onCheckSubmit} onCheckToggler={onCheckToggler} />
           }

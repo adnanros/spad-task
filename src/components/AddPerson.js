@@ -12,7 +12,7 @@ const AddPerson = ({ onSubmitAddPerson }) => {
         birthday: ''
     });
     return (
-        <div style={{ 'padding': '5px' , 'border': '1px solid #ccc', 'padding':'10px', 'marginBottom': '3px' }}>
+        <div style={{ 'padding': '10px' , 'border': '1px solid #ccc', 'marginBottom': '3px' }}>
             <form onSubmit={(e) => { onSubmit(e) }}>
                 <div className="mb-3 row">
                     <label className="col-sm-2 col-form-label">Name</label>
