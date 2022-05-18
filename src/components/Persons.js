@@ -15,7 +15,7 @@ const Persons = ({persons, onCheck, onSelect, onEditPerson}) => {
     });
 
     return (
-        <div style={{'padding': '5px', 'backgroundColor': '#F1F1F1', 'marginBottom': '2px'}}>
+        <div className="persons">
             <div>{selectedPersons}</div>
             <div>{unselectedPersons}</div>
         </div>

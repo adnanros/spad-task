@@ -126,7 +126,6 @@ const onAddPerson = () => {
   return (
     <div className="App">
       <div className='container'>
-        <div className="main-box">
           <SearchBox filterBySearch={filterBySearch} />
           <ActionBar onSelectAll={onSelectAll} selectAll={selectAll} onDelete={onDelete} />
           <Persons persons={!showBySearch ? persons : filteredPersons} onCheck={onCheck} onSelect={onSelect} onEditPerson={onEditPerson} />
@@ -134,7 +133,6 @@ const onAddPerson = () => {
           <AddPersonButton onAddPerson={onAddPerson} /> 
           {showEditPerson && <EditPerson onSubmitEditPerson= {onSubmitEditPerson} onEditPerson={onEditPerson} personToBeUpdated={personToBeUpdated}/>}
           {showChecklist && <CheckList personToCheckOut={personToCheckOut} onCheckSubmit={onCheckSubmit} onCheckToggler={onCheckToggler} />}
-        </div>
       </div>
     </div>
   );

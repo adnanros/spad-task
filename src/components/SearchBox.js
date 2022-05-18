@@ -7,11 +7,11 @@ const SearchBox = ({filterBySearch}) => {
     }
   
     return (
-        <div className='mb-3'>
-            <form className="d-flex" onSubmit= {(e)=>{onSubmit(e)}}>
+        <div className='search-box'>
+            <form onSubmit= {(e)=>{onSubmit(e)}}>
                 <input className="form-control" type="text" value={inputText}
                 onChange={(e)=>{setInputText(e.target.value.toLowerCase()); console.log(inputText);}} />
-                <button className="btn btn-outline-success" type="submit" >Search</button>
+                <button className="btn" type="submit" >Search</button>
             </form>
         </div>
     );
