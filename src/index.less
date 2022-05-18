@@ -2,7 +2,6 @@
 @font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-
 @ordinary-blue-color: #57EFDD;
 @primary-color: #3b5998;
 @secondary-color: #20b2aa;
@@ -15,12 +14,16 @@ body {
     -moz-osx-font-smoothing: grayscale;
     line-height: @line-height;
 }
-
 .container {
+    @media screen and (min-width: 1023px) {
+        width: 800px;
+      }
+    @media screen and (max-width: 990px) {
+        width: 500px;
+      }
     display: flex;
     flex-direction: column;
     padding: 5px;
-    max-width: 600px;
     margin: auto;
 }
 
