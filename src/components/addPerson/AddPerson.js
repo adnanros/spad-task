@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ClosePersonButton from './ClosePersonButton'
+import ClosePersonButton from '../closePersonButton/ClosePersonButton'
 
 const AddPerson = ({ onSubmitAddPerson, onAddPerson }) => {
     const onSubmit = (e) => {

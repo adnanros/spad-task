@@ -1,4 +1,4 @@
-import Person from "./Person";
+import Person from "../person/Person";
 
 const Persons = ({persons, onCheck, onSelect, onEditPerson}) => {
     const selectedPersons = persons.map((person, index) => 

@@ -9,9 +9,9 @@ const SearchBox = ({filterBySearch}) => {
     return (
         <div className='search-box'>
             <form onSubmit= {(e)=>{onSubmit(e)}}>
-                <input className="form-control" type="text" value={inputText}
+                <input className="form-control" type="text" value={inputText} placeholder="Search for some one"
                 onChange={(e)=>{setInputText(e.target.value.toLowerCase()); console.log(inputText);}} />
-                <button className="btn" type="submit" >Search</button>
+                <button className="btn" type="submit" data-testid="search-button">Search</button>
             </form>
         </div>
     );

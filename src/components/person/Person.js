@@ -1,4 +1,4 @@
-import PersonDetail from './PersonDetail';
+import PersonDetail from '../personDetail/PersonDetail';
 
 const Person = ({ person, onCheck, onSelect, onEditPerson }) => {
     return (

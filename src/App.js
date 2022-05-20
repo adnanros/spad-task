@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import './App.css';
-import AddPerson from './components/AddPerson';
-import AddPersonButton from './components/AddPersonButton';
-import CheckList from './components/CheckList';
-import EditPerson from './components/EditPerson';
-import Persons from './components/Persons';
-import SearchBox from './components/SearchBox';
-import ActionBar from './components/ActionBar';
+import AddPerson from './components/addPerson/AddPerson';
+import AddPersonButton from './components/addPersonButton/AddPersonButton';
+import CheckList from './components/checkList/CheckList';
+import EditPerson from './components/editPerson/EditPerson';
+import Persons from './components/persons/Persons';
+import SearchBox from './components/searchBox/SearchBox';
+import ActionBar from './components/actionBar/ActionBar';
 
 function App() {
   const [persons, setPersons] = useState([

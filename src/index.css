@@ -103,7 +103,7 @@ code {
 }
 .person-actions-top {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-bottom: 3px;
 }
 .person-actions-bottom {
@@ -120,7 +120,7 @@ code {
 }
 .add-person-button {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   cursor: pointer;
   padding-right: 15px;
   margin-bottom: 3px;
@@ -136,7 +136,7 @@ code {
 }
 .close-person-button {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   cursor: pointer;
   margin-right: 5px;
 }
@@ -160,7 +160,7 @@ code {
 }
 .add-person-actions {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .check-list {
   border: 1px solid #ccc;
@@ -183,6 +183,6 @@ code {
 }
 .confirm-button {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-top: 5px;
 }
