@@ -2,7 +2,7 @@ import PersonDetail from '../personDetail/PersonDetail';
 
 const Person = ({ person, onCheck, onSelect, onEditPerson }) => {
     return (
-        <div className='person-card'>
+        <div className='person-card' data-testid={`person-div-${person.id}`}>
 
             <div className='person-card-image'>
                 <img src={`${process.env.PUBLIC_URL}/assets/images/${person.profileImage}`} alt='...' />
@@ -15,7 +15,7 @@ const Person = ({ person, onCheck, onSelect, onEditPerson }) => {
                     </div>
                     <div>
                         <input type='checkbox' checked={person.selected}
-                            onChange={() => { onSelect(person.id) }} />
+                            onChange={() => { onSelect(person.id) }} data-testid={`person-checkbox-${person.id}`}/>
                     </div>
                 </div>
 

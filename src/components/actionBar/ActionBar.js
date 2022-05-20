@@ -6,7 +6,7 @@ const ActionBar = ({ onSelectAll, selectAll, onDelete }) => {
                 alt="recycle"/>
             </div>
             <div>
-                <input type="checkbox" checked={selectAll} onChange={(e) => { onSelectAll(e) }} />
+                <input type="checkbox" checked={selectAll} onChange={(e) => { onSelectAll(e) }} data-testid="select-all" />
             </div>
         </div>
     );
