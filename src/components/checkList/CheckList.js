@@ -17,7 +17,7 @@ const CheckList = ({ personToCheckOut, onCheckSubmit, onCheckToggler }) => {
     }
     return (
         <div className="check-list">
-            <div className="check-list-frame">
+            <div className="check-list-frame" data-testid="check-list-frame">
                 <div className="title">Name:</div>
                 <div className="value">{person.name}</div>
                 <div className="actions">
@@ -53,7 +53,7 @@ const CheckList = ({ personToCheckOut, onCheckSubmit, onCheckToggler }) => {
                         onClick={() => { setCheckout({ ...checkout, birthDate: false }) }}></i>
                 </div>
             </div>
-            <div className="confirm-button">
+            <div className="confirm-button" data-testid="checklist-confirm-button">
                 <button className="btn-ordinary" onClick={onConfirem}>Confirm</button>
             </div>
         </div>
