@@ -15,7 +15,8 @@ const EditPerson = ({ onSubmitEditPerson, onEditPerson, personToBeUpdated }) => 
                     <label className="form-label">Name</label>
                     <input className="form-control" type='text' name="name" placeholder="Enter Your First Name"
                         value={person.name}
-                        onChange={(e) => { setPerson({ ...person, name: e.target.value }) }} />
+                        onChange={(e) => { setPerson({ ...person, name: e.target.value }) }} 
+                    data-testid="edit-input-name"/>
                 </div>
                 <div className="form-group">
                     <label className="form-label">Family</label>
@@ -31,7 +32,7 @@ const EditPerson = ({ onSubmitEditPerson, onEditPerson, personToBeUpdated }) => 
                 </div>
                 <div className="add-person-actions">
                     <ClosePersonButton onClick={() => { onEditPerson(person) }} />
-                    <button className="btn-ordinary" type="submit">Save</button>
+                    <button className="btn-ordinary" type="submit" data-testid="edit-confirm-button">Save</button>
                 </div>
             </form>
         </div>

@@ -11,7 +11,8 @@ const Person = ({ person, onCheck, onSelect, onEditPerson }) => {
                 <div className='person-actions-top'>
                     <div className='mx-2' style={{ 'cursor': 'pointer' }}>
                         <i className="fa fa-pencil" aria-hidden="true" style={{ 'fontSize': '16px', 'color': '#333' }}
-                            onClick={() => { onEditPerson(person) }}></i>
+                            onClick={() => { onEditPerson(person) }} 
+                            data-testid={`edit-icon-${person.id}`}></i>
                     </div>
                     <div>
                         <input type='checkbox' checked={person.selected}

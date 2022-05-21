@@ -11,8 +11,8 @@ describe('render Persons and checks whether renders selected before', ()=>{
 
   it('render selected person at the first', async () => {
     render(<App />);
-    const selectedPersonChecBox = await screen.findByTestId(/person-checkbox-4988988834/i);
-    fireEvent.click(selectedPersonChecBox);
+    const selectedPersonCheckBox = await screen.findByTestId(/person-checkbox-4988988834/i);
+    fireEvent.click(selectedPersonCheckBox);
     // console.log(selectedPersonChecBox);
 
 

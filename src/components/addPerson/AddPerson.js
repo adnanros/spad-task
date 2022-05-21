@@ -41,7 +41,7 @@ const AddPerson = ({ onSubmitAddPerson, onAddPerson }) => {
                 </div>
                 <div className="add-person-actions">
                     <ClosePersonButton onClick={onAddPerson} />
-                    <button className="btn-ordinary" type="submit">Save</button>
+                    <button className="btn-ordinary" type="submit" data-testid="add-person-submit">Save</button>
                 </div>
             </form>
         </div>
